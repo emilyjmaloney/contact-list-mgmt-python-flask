@@ -1,12 +1,10 @@
 ## Table of contents
-
 1. How to create an empty database
 2. How to create your models
 3. How to add endpoints
 4. Using the /admin
 
 ## Creating a Database
-
 1. Login in into your mysql terminal:
 ```sh
 $ mysql
@@ -17,12 +15,12 @@ CREATE DATABASE example;
 ```
 Note: you can delete the previous database using the drop command
 
-## Coding a typical CRUD operation
 
+## Coding a typical CRUD operation
 As an example we are going to create a small API to manage a Person
 
-### Adding an Model
 
+### Adding an Model
 For each `model` you will have to declare a class with the model properties and a method `serialize` that returns a dictionary representation of the class
 
 ```py
@@ -45,7 +43,6 @@ class Person(db.Model):
 ```
 
 ### Adding an endpoint
-
 For each endpoint you will need to have:
 1. One `@APP` decorator that specifies the path for the expoint.
     - You can have parameters in the url like this `<int:person_id>`
@@ -74,15 +71,11 @@ def get_single_person(person_id):
 ```
 
 ### Using the admin
-
 You can add your models to the admin, that way you will be able to manage them without any extra code.
-
 To add a new model into the admin, just open the `src/admin.py` file and add this line inside the `setup_admin` function.
 
 ```python
 admin.add_view(ModelView(YourModelName, db.session))
 ```
-
 Note: Make sure you import the model on the top of the file
-
 You can read [more about the admin here](https://github.com/4GeeksAcademy/flask-rest-hello/blob/master/docs/ADMIN.md).
